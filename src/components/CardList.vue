@@ -65,6 +65,7 @@ export default {
   margin-bottom: 10px;
   word-break: break-all;
   text-align: left;
+  cursor: grabbing;
 }
 .delete-btn {
   position: absolute; right: 10px;

@@ -1,5 +1,8 @@
-<<<<<<< HEAD
+
 # vue-trello
+Vue 활용 Trello App 예제
+
+Vue version: Vue 2.xx
 
 ## Project setup
 ```
