@@ -14,6 +14,7 @@
 </template>
 <script>
 import draggable from "vuedraggable";
+import { mapGetters } from 'vuex';
 export default {
     name: 'CardList',
     props: ["listId", "listName"],
@@ -30,9 +31,11 @@ export default {
       };
       this.$store.dispatch("toggleOverlay");
       this.$store.dispatch("openForm", currentData);
+      
     },
     },
     computed: {
+    ...mapGetters(['currentData']),
     cards() {
       const cardFilteredByListId = this.$store.getters["cards"];
       return cardFilteredByListId.filter((card) => {
@@ -62,5 +65,18 @@ export default {
   margin-bottom: 10px;
   word-break: break-all;
   text-align: left;
+}
+.delete-btn {
+  position: absolute; right: 10px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+.delete-btn:hover {
+  background-color: #929fa2;
+  color: #fff;
 }
 </style>

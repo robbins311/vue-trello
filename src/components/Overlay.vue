@@ -16,7 +16,7 @@ export default {
     computed: {
         overlayIsActive() {
             return this.$store.getters["overlay"];
-        }
+        },
     }
 }
 </script>
@@ -24,8 +24,7 @@ export default {
 .overlay {
 background-color: rgba(0, 0, 0, 0.5);
 position: absolute;
-height: 100%;
-width: 100%;
+height: 100%; width: 100%;
 z-index: 500;
 }
 

@@ -72,25 +72,19 @@ export default {
 }
 
 .modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
   gap: 20px;
   position: absolute;
-  height: 500px;
-  width: 500px;
+  height: 500px; width: 500px;
   border-radius: 10px;
   background-color: rgba(235, 236, 240, 1);
   z-index: 550;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
 }
 
 input {
-  width: 250px;
-  height: 50px;
+  width: 250px; height: 50px;
   padding: 10px 20px 10px 20px;
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 15px;

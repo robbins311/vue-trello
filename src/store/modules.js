@@ -21,23 +21,13 @@ const state = {
         id: 3,
         name: "Done",
       },
+      {
+        id: 4,
+        name: "Improve",
+      },
     ],
     cards: [
-      {
-        listId: 1,
-        id: 1,
-        name: "card 1",
-      },
-      {
-        listId: 2,
-        id: 2,
-        name: "card 2",
-      },
-      {
-        listId: 3,
-        id: 3,
-        name: "card 3",
-      },
+
     ],
 }
 

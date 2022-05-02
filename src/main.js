@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.config.productionTip = false
 Vue.prototype.$store = store
+
 library.add(faUserSecret)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

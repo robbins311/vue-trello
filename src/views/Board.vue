@@ -19,13 +19,15 @@
                 </div>
                 </div>
             </draggable>
-            <input
-                type="text"
-                class="input-new-list"
-                placeholder="Create a List"
-                v-model="listName"
-                @keyup.enter="createList"
-            />
+            <div>
+                <input
+                    type="text"
+                    class="input-new-list"
+                    placeholder="Create a List"
+                    v-model="listName"
+                    @keyup.enter="createList"
+                />
+            </div>
         </section>
     </div>
 </template>
@@ -56,16 +58,19 @@ export default {
             this.listName = "";
         }
         },
-  },
-  computed: {
-    lists() {
-      return this.$store.getters["lists"];
     },
-  },
+    computed: {
+        lists() {
+        return this.$store.getters["lists"];
+        },
+    },
 
 }
 </script>
 <style>
+.add-btn {
+    width: 40px; height: 20px;
+}
 .list-container {
   position: relative;
   display: flex;
@@ -77,20 +82,14 @@ export default {
 
 .list-wrapper {
   position: relative;
-  display: flex;
-  flex-direction: row;
+  display: flex; flex-direction: row;
   box-sizing: border-box;
-  min-width: 100vw;
-  height: 100vh;
-  padding: 20px;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+  min-width: 100vw; height: 100vh;
+  padding: 40px;
+  background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover;
   background-image: url(../assets/images/main_back.jpg);
   gap: 20px;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-x: scroll; overflow-y: hidden;
 }
 
 .ghost {
@@ -104,11 +103,10 @@ export default {
 
 .input-new-list {
   display: flex;
-  height: 30px;
+  min-width: 260px; height: 30px;
   padding: 10px;
   border-radius: 5px;
   background-color: rgba(235, 236, 240, 0.5);
-  min-width: 260px;
 }
 
 .input-new-list::placeholder {
@@ -117,10 +115,8 @@ export default {
 
 .list-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  height: auto;
+  display: flex; flex-direction: column;
+  min-width: 300px; height: auto;
 }
 
 .list-header {
@@ -129,8 +125,7 @@ export default {
   word-break: break-all;
   font-weight: bold;
   align-items: center;
-  min-width: 280px;
-  max-width: 280px;
+  min-width: 280px; max-width: 280px;
   line-height: 50px;
   padding: 0px 10px 0px 10px;
   background-color: rgba(235, 236, 240, 1);
@@ -142,10 +137,8 @@ export default {
 .list-content {
   overflow-y: scroll;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 280px;
-  max-width: 280px;
+  display: flex; flex-direction: column;
+  min-width: 280px; max-width: 280px;
   height: auto;
   background-color: rgba(235, 236, 240, 1);
   padding: 0px 10px 0px 10px;
@@ -155,14 +148,12 @@ export default {
 
 .list-footer {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   width: 280px;
   background-color: rgba(235, 236, 240, 1);
   border-radius: 0px 0px 10px 10px;
   color: white;
   border-top: 0.5px solid rgba(255, 255, 255, 0.25);
-  padding: 0px 10px 10px 10px;
+  padding: 0px 10px 15px 10px;
 }
 </style>
