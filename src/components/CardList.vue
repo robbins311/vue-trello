@@ -1,27 +1,28 @@
 <template>
-    <div>
-        <draggable :options="{group: 'cards'}" group="cards" ghostClass="ghost">
-        <span
+  <div>
+    <draggable :options="{ group: 'cards' }" group="cards" ghostClass="ghost">
+      <span
         class="element-card"
-        v-for="(card, index) in cards"
-        :key="index"
-        @click="togglePopup(card)"
-        >
-      {{ card.name }}
-        </span>
-        </draggable>
-    </div>
+        v-for="card in cards"
+        :key="card.id"
+        @click.stop="togglePopup(card)"
+      >
+        {{ card.name }}
+        <span class="delete-btn" @click.stop="deleteElement(card)">x</span>
+      </span>
+    </draggable>
+  </div>
 </template>
 <script>
 import draggable from "vuedraggable";
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
-    name: 'CardList',
-    props: ["listId", "listName"],
-    components: {
-        draggable,
-    },
-    methods: {
+  name: "CardList",
+  props: ["listId", "listName"],
+  components: {
+    draggable,
+  },
+  methods: {
     togglePopup(data) {
       const currentData = {
         listId: this.listId,
@@ -29,13 +30,17 @@ export default {
         id: data.id,
         name: data.name,
       };
+      console.log(currentData);
       this.$store.dispatch("toggleOverlay");
       this.$store.dispatch("openForm", currentData);
-      
     },
+    deleteElement(data) {
+      const id = data.id;
+      this.$store.dispatch("deleteCard", id);
     },
-    computed: {
-    ...mapGetters(['currentData']),
+  },
+  computed: {
+    ...mapGetters(["currentData"]),
     cards() {
       const cardFilteredByListId = this.$store.getters["cards"];
       return cardFilteredByListId.filter((card) => {
@@ -49,8 +54,8 @@ export default {
     overlayIsActive() {
       return this.$store.getters["overlay"];
     },
-    }
-}
+  },
+};
 </script>
 <style>
 .element-card {
@@ -59,6 +64,7 @@ export default {
   height: auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
   border-radius: 5px;
   min-height: 30px;
@@ -68,13 +74,14 @@ export default {
   cursor: grabbing;
 }
 .delete-btn {
-  position: absolute; right: 10px;
+  position: absolute;
+  right: 10px;
   width: 30px;
   height: 30px;
   border: none;
   background: none;
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 .delete-btn:hover {
   background-color: #929fa2;

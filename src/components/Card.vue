@@ -1,39 +1,40 @@
 <template>
-    <div class="card-wrap">
-        <input 
-            class="input-card" 
-            type="text" 
-            placeholder=" + Add a card"
-            v-model="cardName"
-            @keyup.enter="createCard"
-        />
-    </div>
+  <div class="card-wrap">
+    <input
+      class="input-card"
+      type="text"
+      placeholder=" + Add a card"
+      v-model="cardName"
+      @keyup.enter="createCard"
+    />
+  </div>
 </template>
 <script>
 export default {
-    name: 'Card',
-    props: ["listId"],
-    data() {
-        return {
-            cardName:'',
-        }
+  name: "Card",
+  props: ["listId"],
+  data() {
+    return {
+      cardName: "",
+      index: 0,
+    };
+  },
+  methods: {
+    createCard() {
+      if (this.cardName !== "") {
+        const card = {
+          listId: this.listId,
+          name: this.cardName,
+        };
+        this.$store.dispatch("createCard", card);
+        this.cardName = "";
+        localStorage.setItem("content", card.name);
+      } else {
+        alert("내용을 입력하세요");
+      }
     },
-    methods: {
-        createCard() {
-            if (this.cardName !== "") {
-                const card = {
-                listId: this.listId,
-                name: this.cardName,
-                };
-                this.$store.dispatch("createCard", card);
-                this.cardName = "";
-                localStorage.setItem('content', card.name);
-            } else {
-                alert('내용을 입력하세요');
-            }
-        }
-    },
-}
+  },
+};
 </script>
 <style>
 .card-wrap {
