@@ -90,11 +90,11 @@ export default {
   min-width: 100vw;
   height: 100vh;
   padding: 40px;
-  /* background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center; */
+  background-position: center;
   background-size: cover;
-  background: url("file:///assets/images/main_back.jpg") no-repeat fixed center;
+  background-image: url("../assets/images/main_back3.avif");
   gap: 20px;
   overflow-x: scroll;
   overflow-y: hidden;
