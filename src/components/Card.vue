@@ -11,7 +11,7 @@
 </template>
 <script>
 export default {
-  name: "Card",
+  name: "mainCard",
   props: ["listId"],
   data() {
     return {

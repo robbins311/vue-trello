@@ -1,31 +1,31 @@
 <template>
-    <div>
-        <transition>
-            <div v-if="overlay" class="modal">
-                <h1>List Name : {{ currentData.listName }}</h1>
-                <input :placeholder="currentData.name" v-model="cardName" />
-                <div class="container-button">
-                    <button class="blue" @click="saveElement">save</button>
-                    <button class="red" @click="deleteElement">delete</button>
-                </div>
-            </div>
-        </transition>
-    </div>
+  <div>
+    <transition>
+      <div v-if="overlay" class="modal">
+        <h1>List Name : {{ currentData.listName }}</h1>
+        <input :placeholder="currentData.name" v-model="cardName" />
+        <div class="container-button">
+          <button class="blue" @click="saveElement">save</button>
+          <button class="red" @click="deleteElement">delete</button>
+        </div>
+      </div>
+    </transition>
+  </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-    name: 'Popup',
-    data() {
-        return {
-            cardName: null,
-        }
-    },
-    computed: {
+  name: "PopupLayout",
+  data() {
+    return {
+      cardName: null,
+    };
+  },
+  computed: {
     ...mapGetters(["overlay", "currentData"]),
   },
-    methods: {
+  methods: {
     saveElement() {
       if (this.cardName === null) {
         this.cardName = this.currentData.name;
@@ -44,7 +44,7 @@ export default {
       this.$store.dispatch("toggleOverlay");
     },
   },
-}
+};
 </script>
 <style scoped>
 .v-enter-from {
@@ -72,19 +72,25 @@ export default {
 }
 
 .modal {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   position: absolute;
-  height: 500px; width: 500px;
+  height: 500px;
+  width: 500px;
   border-radius: 10px;
   background-color: rgba(235, 236, 240, 1);
   z-index: 550;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 input {
-  width: 250px; height: 50px;
+  width: 250px;
+  height: 50px;
   padding: 10px 20px 10px 20px;
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 15px;

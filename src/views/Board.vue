@@ -3,6 +3,7 @@
     <Overlay />
     <Popup />
     <section class="list-wrapper">
+      <!-- <img :src="imageSource" /> -->
       <draggable
         :options="{ group: 'lists' }"
         group="lists"
@@ -38,7 +39,7 @@ import CardList from "../components/CardList.vue";
 import Overlay from "../components/Overlay.vue";
 import Popup from "../components/Popup.vue";
 export default {
-  name: "Board",
+  name: "mainBoard",
   components: {
     draggable,
     Card,
@@ -49,6 +50,7 @@ export default {
   data() {
     return {
       listName: "",
+      imageSource: require("../assets/images/main_back3.avif"),
     };
   },
   methods: {
@@ -88,11 +90,11 @@ export default {
   min-width: 100vw;
   height: 100vh;
   padding: 40px;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
+  background-position: center; */
   background-size: cover;
-  background-image: url(../assets/images/main_back3.avif);
+  background: url("file:///assets/images/main_back.jpg") no-repeat fixed center;
   gap: 20px;
   overflow-x: scroll;
   overflow-y: hidden;

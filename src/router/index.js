@@ -1,23 +1,21 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Board from '../views/Board.vue';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Board from "../views/Board.vue";
 
-
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Board',
+    path: "/",
+    name: "Board",
     component: Board,
   },
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "hash",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
