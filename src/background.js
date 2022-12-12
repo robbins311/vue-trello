@@ -13,12 +13,21 @@ protocol.registerSchemesAsPrivileged([
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
+    // window default width, height(min, max값도 가능)
     width: 1920,
     height: 1080,
+    // 크기 조절 허용여부, 기본값 true
+    resizable: true,
+    // 앱 실행시 window 중앙 위치
+    center: true,
+    // window 항상 최상단 위치, 기본값 false
+    // alwaysOnTop: true,
+    // 메뉴바 숨김여부
+    autoHideMenuBar: true,
     webPreferences: {
-      // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
+      // node기반 라이브러리 사용여부, 기본값 true
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      // preload 스크립트, 기본값 true
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
     },
   });
@@ -34,10 +43,12 @@ async function createWindow() {
   }
 }
 
+//[생명주기] 모든 창이 닫히면 자동으로 앱 종료
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
+  // darwin(unix) 운영체제 = macOS
   if (process.platform !== "darwin") {
     app.quit();
   }

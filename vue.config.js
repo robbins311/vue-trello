@@ -5,6 +5,18 @@ module.exports = defineConfig({
   pluginOptions: {
     electronBuilder: {
       customFileProtocol: "./",
+      builderOptions: {
+        productName: "Todo-App",
+        win: {
+          icon: "public/trel_icon.png",
+        },
+        nsis: {
+          installerIcon: "public/favicon.ico",
+          uninstallerIcon: "public/favicon.ico",
+          uninstallDisplayName: "CPU Monitor",
+          oneClick: false,
+        },
+      },
     },
   },
 });
