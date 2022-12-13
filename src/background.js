@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, Menu } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -31,7 +31,26 @@ async function createWindow() {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
     },
   });
+  const templete = [
+    {
+      label: "edit",
+      submenu: [
+        {
+          role: "zoomIn",
+          accelerator: "CommandOrControl+=",
+        },
+        {
+          role: "zoomOut",
+        },
+        {
+          role: "reload",
+        },
+      ],
+    },
+  ];
+  let newMenu = Menu.buildFromTemplate(templete);
 
+  Menu.setApplicationMenu(newMenu);
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
