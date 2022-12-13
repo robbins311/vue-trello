@@ -8,7 +8,7 @@
         @click.stop="togglePopup(card)"
       >
         {{ card.name }}
-        <span class="delete-btn" @click.stop="deleteElement(card)">x</span>
+        <!-- <span class="delete-btn" @click.stop="deleteElement(card)">x</span> -->
       </span>
     </draggable>
   </div>
