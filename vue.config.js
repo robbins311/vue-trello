@@ -8,6 +8,9 @@ module.exports = defineConfig({
       builderOptions: {
         productName: "Todo-App",
         win: {
+          icon: "public/trel_icon.png",
+        },
+        mac: {
           icon: "public/trel_icon.icns",
         },
         nsis: {
